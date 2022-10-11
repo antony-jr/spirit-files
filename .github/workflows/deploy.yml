@@ -1,0 +1,42 @@
+name: Deploy Spirits
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  make:
+    name: "Make Spirits and Release"
+    runs-on: ubuntu-18.04
+    outputs:
+      deploy: ${{ needs.Check.outputs.deploy }}
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    needs: Check
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Get Ritual
+        id: get_ritual
+        run: |
+          sudo wget -O /usr/bin/ritual "https://github.com/antony-jr/ritual/releases/download/development/ritual-linux-amd64"
+          sudo chmod +x /usr/bin/ritual
+
+      - name: Make Levi Ackerman Spirit
+        id: levi
+        run: |
+          ritual make "Levi Ackerman"
+          mv "Levi Ackerman.spirit" levi_ackerman.spirit
+
+      - name: Upload Levi Ackerman Spirit
+        if: needs.Check.outputs.deploy == 'false'
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./levi_ackerman.spirit
+          tag: continuous
+          overwrite: true
+          file_glob: true
+          prerelease: false
+          release_name: "Latest Spirit Files"
+          body: "The latest make of official Spirits."
