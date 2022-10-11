@@ -9,10 +9,6 @@ jobs:
   make:
     name: "Make Spirits and Release"
     runs-on: ubuntu-18.04
-    outputs:
-      deploy: ${{ needs.Check.outputs.deploy }}
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
-    needs: Check
     steps:
       - uses: actions/checkout@v2
       
