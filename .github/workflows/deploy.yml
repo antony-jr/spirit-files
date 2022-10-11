@@ -25,7 +25,6 @@ jobs:
           mv "Levi Ackerman.spirit" levi_ackerman.spirit
 
       - name: Upload Levi Ackerman Spirit
-        if: needs.Check.outputs.deploy == 'false'
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
