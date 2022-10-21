@@ -1,0 +1,17 @@
+{
+   "name": "Ken Kaneki",
+   "edition": "2021",
+   "version": "v0.1.0",
+   "author": "Antony J.R",
+   "copyright": "Fan Art by @fluffy-pigeons, Copyright belongs to Pierrot Studio.",
+   "actions": {
+	   "default": {
+	     "scale": 48,
+	     "speed": 70,
+	     "xoff": -50,
+	     "_xoff": 30,
+	     "yoff": 30,
+	     "play": "track0"
+	   } 
+   }
+}
