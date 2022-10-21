@@ -35,3 +35,21 @@ jobs:
           prerelease: false
           release_name: "Latest Spirit Files"
           body: "The latest make of official Spirits."
+      
+      - name: Make Simple Cat Spirit
+        id: simple_cat
+        run: |
+          ritual make "Simple Cat"
+          mv "Simple Cat.spirit" simple_cat.spirit
+
+      - name: Upload Simple Cat Spirit
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./simple_cat.spirit
+          tag: continuous
+          overwrite: true
+          file_glob: true
+          prerelease: false
+          release_name: "Latest Spirit Files"
+          body: "The latest make of official Spirits."

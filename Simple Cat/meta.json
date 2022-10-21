@@ -1,0 +1,17 @@
+{
+   "name": "Simple Cat",
+   "edition": "2021",
+   "version": "v0.1.0",
+   "author": "Antony J.R",
+   "copyright": "Artwork Copyright (C) Giphy.",
+   "actions": {
+	   "default": {
+	     "scale": 75,
+	     "speed": 60,
+	     "xoff": -60,
+	     "_xoff": 40,
+	     "yoff": 40,
+	     "_yoff": 15
+	   } 
+   }
+}
